@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人作品集 | 活動策劃與體驗設計</title>
+    <title>個人作品集 | 活動策劃與現場主持</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -27,31 +27,43 @@
 
         body { 
             font-family: 'Noto Sans TC', sans-serif; 
-            scroll-behavior: smooth; 
             background-color: var(--notion-bg);
             color: var(--notion-text);
-            transition: background-color 0.3s ease;
             margin: 0;
+            padding: 0;
+            /* 關鍵：禁止網頁內部滾動，讓 Notion 成為唯一滾軸 */
+            overflow: hidden; 
+            height: auto; 
         }
 
-        .section-padding { padding: 5rem 1.5rem; }
-        
-        .project-card, .info-card {
+        .info-card {
             border: 1px solid var(--notion-border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background-color: rgba(255, 255, 255, 0.02);
         }
-        .project-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+        .profile-image-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         .experience-item {
             border-left: 2px solid var(--notion-border);
             padding-left: 1.5rem;
             position: relative;
+            margin-bottom: 2rem;
         }
+        
         .experience-item::before {
             content: '';
             position: absolute;
@@ -63,132 +75,62 @@
             background-color: var(--accent);
         }
 
-        /* 個人照特效 */
-        .profile-image-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            margin-bottom: 2rem;
-        }
-        .profile-image-container::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            z-index: 0;
-        }
-        .profile-image {
-            width: 100%;
-            height: 100%;
-            object-cover: cover;
-            border-radius: 50%;
-            position: relative;
-            z-index: 1;
-            border: 4px solid var(--notion-bg);
+        section { width: 100%; max-width: 800px; margin: 0 auto; }
+        
+        /* 讓文字更好讀的行高 */
+        .bio-text {
+            line-height: 1.8;
+            letter-spacing: 0.02em;
         }
     </style>
 </head>
-<body class="min-h-screen">
+<body>
 
-    <!-- 導航列 -->
-    <nav class="fixed top-0 w-full z-50 border-b border-opacity-10 backdrop-blur-md" style="border-color: var(--notion-border); background-color: rgba(25, 25, 25, 0.01);">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="font-black text-xl tracking-tighter text-blue-600">PORTFOLIO.</div>
-            <div class="hidden md:flex space-x-8 text-sm font-bold">
-                <a href="#about" class="hover:text-blue-500 transition">關於我</a>
-                <a href="#experience" class="hover:text-blue-500 transition">經歷</a>
-                <a href="#projects" class="hover:text-blue-500 transition">作品案例</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- 主視覺區與自我介紹 -->
-    <section id="about" class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
-        <!-- 新增：個人照區塊 -->
+    <!-- 個人介紹區塊 -->
+    <section class="py-10 px-6 text-center">
         <div class="profile-image-container">
-            <!-- 請將 src 替換為你的個人照片連結 -->
+            <!--  -->
             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" alt="個人照" class="profile-image">
         </div>
 
-        <h2 class="text-blue-600 font-bold tracking-[0.3em] text-xs mb-4 uppercase">Event Planner & Host</h2>
-        <h1 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
-            讓創意在現場<br><span class="text-blue-600">呼吸與發光</span>
-        </h1>
+        <h2 class="text-blue-600 font-bold tracking-[0.2em] text-[10px] mb-3 uppercase font-black">Event Planner & Host</h2>
+        <h1 class="text-3xl md:text-4xl font-black mb-6 leading-tight">讓創意在現場呼吸與發光</h1>
         
-        <!-- 更新：自我介紹文字 -->
-        <p class="text-base md:text-lg opacity-80 mb-10 max-w-2xl mx-auto leading-relaxed font-medium">
+        <!-- 你要求的自我介紹內容 -->
+        <p class="bio-text text-sm md:text-base opacity-80 mb-8 max-w-2xl mx-auto font-medium">
             一位熱愛創意策劃的活動人，專注於大型活動統籌、團隊管理與現場主持。透過細膩的活動規劃和即興應變能力，致力於為每個活動注入獨特的生命力，創造難忘的現場體驗。
         </p>
-    
     </section>
 
-    <!-- 經歷簡介（已移除佔位文字，保留結構供你填寫） -->
-    <section id="experience" class="section-padding border-t" style="border-color: var(--notion-border);">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-black mb-12 text-center">策展經歷</h2>
-            <div class="space-y-12">
-                <!-- 經歷 1 -->
-                <div class="experience-item">
-                    <span class="text-xs font-bold text-blue-500 uppercase">年份起迄</span>
-                    <h3 class="text-xl font-black mt-1">職稱 @ 公司名稱 / 專案名稱</h3>
-                    <p class="mt-2 opacity-60">在此填入你的真實經歷描述（如：主導大型品牌發表會、協調團隊合作等）。</p>
-                </div>
-                <!-- 經歷 2 -->
-                <div class="experience-item">
-                    <span class="text-xs font-bold text-blue-500 uppercase">年份起迄</span>
-                    <h3 class="text-xl font-black mt-1">職稱 @ 公司名稱 / 專案名稱</h3>
-                    <p class="mt-2 opacity-60">在此填入你的真實經歷描述。</p>
-                </div>
+    <!-- 經歷區塊 -->
+    <section class="py-8 px-6 border-t" style="border-color: var(--notion-border);">
+        <h2 class="text-2xl font-black mb-8">策展經歷</h2>
+        <div class="space-y-4">
+            <!-- 經歷 1 -->
+            <div class="experience-item">
+                <span class="text-[10px] font-bold text-blue-500 uppercase">2023 - Present</span>
+                <h3 class="text-lg font-black mt-1">活動統籌 @ [請輸入公司名稱]</h3>
+                <p class="mt-2 text-sm opacity-60 leading-relaxed bio-text">
+                    [請在此填入圖片中對應的經歷內容，例如：負責年度品牌發佈會之整體規劃與現場執行控制。]
+                </p>
+            </div>
+            <!-- 經歷 2 -->
+            <div class="experience-item">
+                <span class="text-[10px] font-bold text-blue-500 uppercase">2021 - 2023</span>
+                <h3 class="text-lg font-black mt-1">專案經理 @ [請輸入公司名稱]</h3>
+                <p class="mt-2 text-sm opacity-60 leading-relaxed bio-text">
+                    [請在此填入第二個經歷內容。]
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- 作品展示區 -->
-    <section id="projects" class="section-padding border-t" style="border-color: var(--notion-border);">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-black mb-16">精選案例</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="project-card rounded-3xl overflow-hidden">
-                    <div class="aspect-video bg-gray-200 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800" alt="年度品牌盛典" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold mb-2">年度品牌發佈盛典</h3>
-                        <p class="text-sm opacity-60 mb-6">全方位動線規劃與感官體驗整合。</p>
-                        <div class="flex gap-2 text-[10px] opacity-40">
-                            <span>#品牌策劃</span> <span>#現場統籌</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card rounded-3xl overflow-hidden">
-                    <div class="aspect-video bg-gray-200 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1531050171669-01c97a7696f5?w=800" alt="創意市集" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-bold mb-2">城市創意快閃市集</h3>
-                        <p class="text-sm opacity-60 mb-6">整合 50 家獨立品牌，打造具備美學氛圍的戶外消費空間。</p>
-                        <div class="flex gap-2 text-[10px] opacity-40">
-                            <span>#場域規劃</span> <span>#視覺整合</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 底部資訊與聯絡 -->
-    <footer class="py-20 text-center border-t" style="border-color: var(--notion-border);">
-        <h2 class="text-2xl font-black mb-6">準備好開始下一個精彩專案了嗎？</h2>
-        <a href="mailto:your-email@example.com" class="text-blue-600 font-bold border-b-2 border-blue-600 pb-1 hover:text-blue-400 hover:border-blue-400 transition">
-            Say Hello -> your-email@example.com
+    <!-- 聯絡區塊 -->
+    <footer class="py-12 text-center border-t" style="border-color: var(--notion-border);">
+        <p class="text-[10px] opacity-40 mb-3 tracking-widest uppercase font-bold">Get In Touch</p>
+        <a href="mailto:your-email@example.com" class="text-blue-600 font-bold hover:opacity-70 transition border-b border-blue-600 text-sm">
+            your-email@example.com
         </a>
-        <div class="mt-16 text-[10px] opacity-30 tracking-[0.5em] uppercase">
-            Designed with Pride &bull; 2024
-        </div>
     </footer>
 
 </body>
