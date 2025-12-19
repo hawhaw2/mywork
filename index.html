@@ -3,126 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人作品集 | Portfolio</title>
+    <title>個人作品集 | 活動策劃與體驗設計</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
         
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            scroll-behavior: smooth;
+        /* 定義顏色變數，讓它能跟隨系統模式變換 */
+        :root {
+            --notion-bg: #ffffff;
+            --notion-text: #111827;
+            --notion-border: #e5e7eb;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --notion-bg: #191919; /* 這是 Notion 深色模式的背景色 */
+                --notion-text: #ffffff;
+                --notion-border: #2f2f2f;
+            }
         }
 
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            scroll-behavior: smooth; 
+            background-color: var(--notion-bg);
+            color: var(--notion-text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0;
         }
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+
+        /* 隱藏捲軸但保持功能 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .project-card {
+            border: 1px solid var(--notion-border);
+            background-color: transparent;
         }
     </style>
 </head>
-<body class="bg-white text-slate-900">
+<body class="min-h-screen">
 
-    <!-- 導航欄 -->
-    <nav class="fixed top-0 w-full z-50 glass-nav">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="font-bold text-xl tracking-tight">PORTFOLIO.</div>
-            <div class="space-x-8 hidden md:flex font-medium text-sm">
-                <a href="#about" class="hover:text-indigo-600 transition">關於我</a>
-                <a href="#projects" class="hover:text-indigo-600 transition">作品案例</a>
+    <!-- 頂部導航 -->
+    <nav class="fixed top-0 w-full z-50 border-b border-opacity-10 backdrop-blur-md" style="border-color: var(--notion-border); background-color: rgba(25, 25, 25, 0.01);">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-black text-xl tracking-tighter text-blue-600">MY PORTFOLIO.</div>
+            <div class="hidden md:flex space-x-8 text-sm font-bold">
+                <a href="#about" class="hover:text-blue-500 transition">關於我</a>
+                <a href="#projects" class="hover:text-blue-500 transition">作品案例</a>
             </div>
         </div>
     </nav>
 
-    <!-- 英雄區塊 -->
-    <section id="about" class="min-h-screen flex items-center pt-20">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-indigo-600 font-bold mb-4 tracking-wider">你好，我是 [你的名字]</h2>
-                <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight">
-                    活動策劃與 <br>場域體驗設計師
-                </h1>
-                <p class="text-lg text-slate-500 mb-8 leading-relaxed">
-                    致力於透過創意策略與精準執行，將品牌精神轉化為真實的感官體驗。在過去的專案中，我專注於流程控管、視覺美學以及現場動線的完美結合。
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#projects" class="px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition">查看作品</a>
-                </div>
-            </div>
-            <div class="relative">
-                <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden shadow-2xl">
-                    <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1000')">
-                        <!--  -->
-                    </div>
-                </div>
+    <!-- 主視覺區 -->
+    <section id="about" class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+        <div class="animate-fade-in">
+            <h2 class="text-blue-600 font-bold tracking-[0.2em] text-sm mb-4 uppercase">Event Planner</h2>
+            <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">
+                活動策劃與<br><span class="text-blue-600">場域體驗</span>設計
+            </h1>
+            <p class="text-lg md:text-xl opacity-60 mb-12 max-w-2xl mx-auto leading-relaxed">
+                我專注於將創意轉化為真實的感受，透過精密的策劃與場景營造，為每個品牌創造獨一無二的記憶點。
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#projects" class="bg-blue-600 text-white px-10 py-4 rounded-full font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20">
+                    查看精選作品集
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 作品列表區塊 -->
-    <section id="projects" class="py-24 bg-slate-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="mb-16">
-                <h2 class="text-3xl font-black mb-4">精選案例</h2>
-                <p class="text-slate-500">透過不同的專案，展現我在策劃與執行上的多元能力。</p>
+    <!-- 作品展示區 -->
+    <section id="projects" class="py-24 px-6 border-t" style="border-color: var(--notion-border);">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex items-end justify-between mb-16">
+                <div>
+                    <h2 class="text-3xl font-black mb-2">精選案例</h2>
+                    <p class="opacity-50 text-sm">Selected Works & Projects</p>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-10">
                 <!-- 案例 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover-lift">
-                    <div class="aspect-video bg-slate-200">
-                        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800')">
-                            <!--  -->
-                        </div>
+                <div class="project-card group rounded-3xl overflow-hidden transition-all hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="aspect-[4/3] bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&q=80" alt="Project 1" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="p-8">
-                        <span class="text-indigo-600 text-sm font-bold uppercase tracking-widest">品牌盛典</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">大型品牌年度年會</h3>
-                        <p class="text-slate-500 mb-6">負責 500 人規模的活動策劃，包含舞台視覺設計、供應商管理及現場流程控管。</p>
-                        <ul class="text-sm text-slate-600 space-y-2">
-                            <li><i class="fa-solid fa-check text-indigo-500 mr-2"></i> 整合超過 10 家軟硬體廠商</li>
-                            <li><i class="fa-solid fa-check text-indigo-500 mr-2"></i> 達成 98% 參與者滿意度</li>
-                        </ul>
+                        <div class="text-xs font-bold text-blue-500 mb-2">品牌活動 / 年度盛典</div>
+                        <h3 class="text-xl font-bold mb-3">年度科技品牌發佈會</h3>
+                        <p class="text-sm opacity-60 leading-relaxed mb-6">負責從動線設計到五感體驗的整體規劃，達成超過 500 人的現場流暢引導。</p>
+                        <div class="text-xs font-medium opacity-40">2024 · 台北市</div>
                     </div>
                 </div>
 
                 <!-- 案例 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover-lift">
-                    <div class="aspect-video bg-slate-200">
-                        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1531050171669-01c97a7696f5?auto=format&fit=crop&q=80&w=800')">
-                            <!--  -->
-                        </div>
+                <div class="project-card group rounded-3xl overflow-hidden transition-all hover:-translate-y-2 hover:shadow-2xl">
+                    <div class="aspect-[4/3] bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1531050171669-01c97a7696f5?w=800&q=80" alt="Project 2" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="p-8">
-                        <span class="text-indigo-600 text-sm font-bold uppercase tracking-widest">文創市集</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">校園創意與市集節</h3>
-                        <p class="text-slate-500 mb-6">策劃以「永續」為主題的戶外市集，成功吸引超過 2,000 名校外遊客參與。</p>
-                        <ul class="text-sm text-slate-600 space-y-2">
-                            <li><i class="fa-solid fa-check text-indigo-500 mr-2"></i> 招募並管理 40 個特色攤商</li>
-                            <li><i class="fa-solid fa-check text-indigo-500 mr-2"></i> 數位宣傳觸及人數達 5 萬人次</li>
-                        </ul>
+                        <div class="text-xs font-bold text-blue-500 mb-2">策展設計 / 快閃店</div>
+                        <h3 class="text-xl font-bold mb-3">創意潮流跨界市集</h3>
+                        <p class="text-sm opacity-60 leading-relaxed mb-6">整合 30 家原創品牌，透過場域美學設計提升現場留存時間 40%。</p>
+                        <div class="text-xs font-medium opacity-40">2023 · 台中市</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 頁尾 -->
-    <footer class="bg-white py-12 border-t border-slate-100">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <div class="font-bold text-xl mb-4 md:mb-0">PORTFOLIO.</div>
-            <div class="text-slate-400 text-sm">
-                &copy; 2024 [你的名字] 版權所有
-            </div>
-        </div>
+    <!-- 底部資訊 -->
+    <footer class="py-20 text-center border-t" style="border-color: var(--notion-border);">
+        <p class="text-xs opacity-30 tracking-widest uppercase">Designed by You &bull; Built with Code</p>
     </footer>
 
 </body>
